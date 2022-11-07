@@ -3,7 +3,7 @@ import numpy, scipy, matplotlib.pyplot as plt, IPython.display as ipd
 import librosa, librosa.display
 import stanford_mir; stanford_mir.init();
 
-x, sr = librosa.load('../Downloads/audio_125_bounce.wav')
+x, sr = librosa.load('./audio/audio_125_bounce.wav')
 
 tempo, beat_times = librosa.beat.beat_track(x, sr=sr, start_bpm=60, units='time')
 print(tempo)
@@ -19,3 +19,5 @@ plt.figure(figsize=(14, 5))
 plt.hist(beat_times_diff, bins=50, range=(0,4))
 plt.xlabel('Beat Length (seconds)')
 plt.ylabel('Count')
+
+plt.show()
