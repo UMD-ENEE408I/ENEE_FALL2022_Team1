@@ -234,7 +234,7 @@ void loop() {
   float ktheta = (2 * 3.14159) / (90.0 * 3.14159 / 180.0);
   est_imu_bias(bias_omega, 500);// Could be expanded for more quantities
 
-  float curr_target_v = 0.4;
+  float curr_target_omega = 0.4;
   float period = 2.0; // In s
   float next_switch_time = period; // When change direction
 
@@ -298,15 +298,15 @@ void loop() {
 
 
 
-    
+    // This version goes back and forth with period and velocity set above.
 
-    target_omega = 0;
+    target_v = 0;
 
     if (t >= next_switch_time) {
-        curr_target_v *= -1; // Change direction
+        curr_target_omega *= -1; // Change direction
         next_switch_time += period; // Increase next_switch_time
     }
-    target_v = curr_target_v; // Go forward slowly
+    target_omega = curr_target_omega; // Go forward slowly
 
 
 
