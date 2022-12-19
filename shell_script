@@ -1,0 +1,17 @@
+#!/bin/bash
+#Bash script to receive and then send out packets
+#link to website I learned: www.linuxfoundation.org/blog/blog/classic-sysadmin-writing-a-simple-#bash?hs_amp=true
+
+#From L to B
+RECEIVE_PL=3333
+SEND_IP1=192.168.2.134
+SEND_P1=2390
+
+#From B to L
+RECEIVE_PB=3332
+SEND_IP2=192.168.2.123
+SEND_P2=2390
+
+socat UDP4-LISTEN:$RECEIVE_PL UDP4:$SEND_IP1:$SEND_P1 &
+socat UDP4-LISTEN:$RECEIVE_PB UDP4:$SEND_IP2:$SEND_P2 &
+
